@@ -1,6 +1,7 @@
-import 'package:admin_dashboard/router/router.dart';
-import 'package:admin_dashboard/ui/layouts/auth/auth_layout.dart';
 import 'package:flutter/material.dart';
+
+import 'router/router.dart';
+import 'ui/layouts/auth/auth_layout.dart';
 
 void main() {
   Flurorouter.configureRoutes();
@@ -17,9 +18,10 @@ class MyApp extends StatelessWidget {
       onGenerateRoute: (routeSettings) =>
           Flurorouter.router.generator(routeSettings),
       builder: (_, child) {
-        return AuthLayout();
+        return AuthLayout(
+          child: child!,
+        );
       },
-      home: Container(),
     );
   }
 }
