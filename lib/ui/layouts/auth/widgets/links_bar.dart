@@ -8,22 +8,65 @@ class LinksBar extends StatelessWidget {
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     return Container(
-        color: Colors.black,
-        height: size.height * 0.05,
-        child: Wrap(children: [
-          LinkText(text: 'About'),
-          LinkText(text: 'Help Center'),
-          LinkText(text: 'Privacy'),
-          LinkText(text: 'Terms of service'),
-          LinkText(text: 'Ads info'),
-          LinkText(text: 'Status'),
-          LinkText(text: 'Careers'),
-          LinkText(text: 'Resources'),
-          LinkText(text: 'Marketing'),
-          LinkText(text: 'Status'),
-          LinkText(text: 'Careers'),
-          LinkText(text: 'Resources'),
-          LinkText(text: 'Marketing'),
-        ]));
+      color: Colors.black,
+      height: size.height * 0.07,
+      child: Wrap(
+        alignment: WrapAlignment.center,
+        children: [
+          LinkText(
+            text: 'About',
+            onTap: () {},
+          ),
+          LinkText(
+            text: 'Help Center',
+            onTap: () {},
+          ),
+          LinkText(
+            text: 'Privacy',
+            onTap: () {},
+          ),
+          LinkText(
+            text: 'Terms of service',
+            onTap: () {},
+          ),
+          LinkText(
+            text: 'Ads info',
+            onTap: () {},
+          ),
+          LinkText(
+            text: 'Status',
+            onTap: () {},
+          ),
+          LinkText(
+            text: 'Careers',
+            onTap: () {},
+          ),
+          LinkText(
+            text: 'Resources',
+            onTap: () {},
+          ),
+          LinkText(
+            text: 'Marketing',
+            onTap: () {},
+          ),
+          LinkText(
+            text: 'Status',
+            onTap: () {},
+          ),
+          LinkText(
+            text: 'Careers',
+            onTap: () {},
+          ),
+          LinkText(
+            text: 'Resources',
+            onTap: () {},
+          ),
+          LinkText(
+            text: 'Marketing',
+            onTap: () {},
+          ),
+        ],
+      ),
+    );
   }
 }
