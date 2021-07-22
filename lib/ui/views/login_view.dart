@@ -1,3 +1,4 @@
+import 'package:admin_dashboard/providers/auth_provider.dart';
 import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -13,6 +14,7 @@ class LoginView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final authProvider = Provider.of<AuthProvider>(context);
     return ChangeNotifierProvider(
       create: (_) => LoginFormProvider(),
       child: Builder(
@@ -69,7 +71,11 @@ class LoginView extends StatelessWidget {
                       const SizedBox(height: 20),
                       CustomOutlinedButton(
                         onPressed: () {
-                          loginFormProvider.validateForm();
+                          final isValid = loginFormProvider.validateForm();
+                          if (isValid) {
+                            authProvider.login(loginFormProvider.email,
+                                loginFormProvider.password);
+                          }
                         },
                         text: 'Ingresar',
                       ),
