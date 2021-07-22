@@ -1,12 +1,12 @@
-import 'package:admin_dashboard/ui/inputs/custom_inputs.dart';
 import 'package:flutter/material.dart';
 
 import '../../router/router.dart';
 import '../buttons/custom_outlined_button.dart';
 import '../buttons/link_text.dart';
+import '../inputs/custom_inputs.dart';
 
-class LoginView extends StatelessWidget {
-  const LoginView({Key? key}) : super(key: key);
+class RegisterView extends StatelessWidget {
+  const RegisterView({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -15,10 +15,19 @@ class LoginView extends StatelessWidget {
       padding: EdgeInsets.symmetric(horizontal: 20),
       child: Center(
         child: ConstrainedBox(
-          constraints: BoxConstraints(maxWidth: 300),
+          constraints: BoxConstraints(maxWidth: 370),
           child: Form(
             child: Column(
               children: [
+                TextFormField(
+                  style: TextStyle(color: Colors.white),
+                  decoration: CustomInputs.loginInputDecoration(
+                    hint: 'Nombre',
+                    label: 'Nombre',
+                    icon: Icons.supervised_user_circle_sharp,
+                  ),
+                ),
+                const SizedBox(height: 20),
                 TextFormField(
                   style: TextStyle(color: Colors.white),
                   decoration: CustomInputs.loginInputDecoration(
@@ -40,13 +49,13 @@ class LoginView extends StatelessWidget {
                 const SizedBox(height: 20),
                 CustomOutlinedButton(
                   onPressed: () {},
-                  text: 'Ingresar',
+                  text: 'Crear cuenta',
                 ),
                 const SizedBox(height: 20),
                 LinkText(
-                  text: 'Crear cuenta',
+                  text: 'Ir al login',
                   onTap: () {
-                    Navigator.pushNamed(context, Flurorouter.registerRoute);
+                    Navigator.pushNamed(context, Flurorouter.loginRoute);
                   },
                 )
               ],
