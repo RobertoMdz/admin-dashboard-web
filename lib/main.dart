@@ -1,10 +1,13 @@
-import 'package:admin_dashboard/providers/auth_provider.dart';
-import 'package:admin_dashboard/services/local_storage.dart';
+import 'package:admin_dashboard/ui/layouts/auth/auth_layout.dart';
+import 'package:admin_dashboard/ui/layouts/dashboard/dashboard_layout.dart';
+import 'package:admin_dashboard/ui/layouts/splash/splash_layout.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import 'providers/auth_provider.dart';
 import 'router/router.dart';
-import 'ui/layouts/auth/auth_layout.dart';
+import 'services/local_storage.dart';
+import 'services/navigation_service.dart';
 
 void main() async {
   await LocalStorage.configurePrefs();
@@ -20,7 +23,10 @@ class AppState extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider(create: (_) => AuthProvider()),
+        ChangeNotifierProvider(
+          lazy: false,
+          create: (_) => AuthProvider(),
+        ),
       ],
       child: MyApp(),
     );
@@ -34,12 +40,21 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Material App',
       initialRoute: '/',
+      navigatorKey: NavigationService.navigatorKey,
       onGenerateRoute: (routeSettings) =>
           Flurorouter.router.generator(routeSettings),
       builder: (_, child) {
-        return AuthLayout(
-          child: child!,
-        );
+        final authProvider = Provider.of<AuthProvider>(context);
+
+        if (authProvider.authStatus == AuthStatus.checking) {
+          return SplashLayout();
+        } else if (authProvider.authStatus == AuthStatus.authenticated) {
+          return DashboardLayout(
+            child: child!,
+          );
+        } else {
+          return AuthLayout(child: child!);
+        }
       },
       theme: ThemeData.light().copyWith(
         scrollbarTheme: ScrollbarThemeData(
