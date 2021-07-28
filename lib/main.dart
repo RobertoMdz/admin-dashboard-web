@@ -62,6 +62,7 @@ class MyApp extends StatelessWidget {
             Colors.grey.withOpacity(0.5),
           ),
         ),
+        canvasColor: const Color(0xFF092044),
       ),
     );
   }
