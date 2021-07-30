@@ -1,4 +1,7 @@
+import 'package:admin_dashboard/providers/side_navbar_notifier_provider.dart';
+import 'package:admin_dashboard/ui/shared/navbar.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import '../../shared/side_bar.dart';
 
@@ -8,12 +11,27 @@ class DashboardLayout extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
     return Scaffold(
+      key: context.read<SideNavbarNotifierProvier>().scaffoldKey,
+      drawer: SideBar(),
       backgroundColor: Color(0xffEDF1F2),
       body: Row(
         children: [
-          SideBar(),
-          Expanded(child: child),
+          if (size.width >= 700) SideBar(),
+          Expanded(
+            child: Column(
+              children: [
+                Navbar(),
+                Expanded(
+                    child: Padding(
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                  child: child,
+                )),
+              ],
+            ),
+          )
         ],
       ),
     );
