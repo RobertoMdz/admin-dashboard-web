@@ -1,3 +1,4 @@
+import 'package:admin_dashboard/ui/cards/white_card.dart';
 import 'package:flutter/material.dart';
 
 import '../labels/custom_labels.dart';
@@ -18,7 +19,36 @@ class IconsView extends StatelessWidget {
         const SizedBox(height: 10),
         Wrap(
           crossAxisAlignment: WrapCrossAlignment.start,
-          children: [],
+          children: [
+            WhiteCard(
+              width: 150,
+              title: 'person',
+              child: Center(
+                child: Icon(Icons.person),
+              ),
+            ),
+            WhiteCard(
+              width: 150,
+              title: 'alarm',
+              child: Center(
+                child: Icon(Icons.alarm),
+              ),
+            ),
+            WhiteCard(
+              width: 150,
+              title: 'login',
+              child: Center(
+                child: Icon(Icons.login),
+              ),
+            ),
+            WhiteCard(
+              width: 150,
+              title: 'alarm',
+              child: Center(
+                child: Icon(Icons.alarm),
+              ),
+            )
+          ],
         )
       ],
     ));
