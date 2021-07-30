@@ -1,3 +1,5 @@
+import 'package:admin_dashboard/router/router.dart';
+import 'package:admin_dashboard/services/navigation_service.dart';
 import 'package:admin_dashboard/ui/shared/group_menu_title.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -5,7 +7,9 @@ import 'package:google_fonts/google_fonts.dart';
 enum DrawerMenuOption { vacancies, profile, none }
 
 class SideBar extends StatelessWidget {
-  const SideBar({Key? key}) : super(key: key);
+  void navigateTo({required String route}) {
+    NavigationService.navigateTo(route);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -40,7 +44,9 @@ class SideBar extends StatelessWidget {
               title: "Dashboard",
               isActive: true,
               icon: Icons.compass_calibration_outlined,
-              onTap: (menuOption) {},
+              onTap: (menuOption) {
+                navigateTo(route: Flurorouter.dashboardRoute);
+              },
             ),
             _DrawerListTile(
               menuOption: DrawerMenuOption.vacancies,
@@ -91,7 +97,9 @@ class SideBar extends StatelessWidget {
               title: "Icons",
               isActive: false,
               icon: Icons.eleven_mp,
-              onTap: (menuOption) {},
+              onTap: (menuOption) {
+                navigateTo(route: Flurorouter.iconsRoute);
+              },
             ),
             _DrawerListTile(
               menuOption: DrawerMenuOption.vacancies,
