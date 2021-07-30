@@ -16,6 +16,10 @@ class IconsView extends StatelessWidget {
           style: CustomLabels.h1,
         ),
         const SizedBox(height: 10),
+        Wrap(
+          crossAxisAlignment: WrapCrossAlignment.start,
+          children: [],
+        )
       ],
     ));
   }
