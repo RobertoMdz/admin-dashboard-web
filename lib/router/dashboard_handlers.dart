@@ -1,4 +1,6 @@
 import 'package:admin_dashboard/providers/auth_provider.dart';
+import 'package:admin_dashboard/providers/side_navbar_notifier_provider.dart';
+import 'package:admin_dashboard/router/router.dart';
 import 'package:admin_dashboard/ui/views/icons_view.dart';
 import 'package:admin_dashboard/ui/views/login_view.dart';
 import 'package:fluro/fluro.dart';
@@ -10,6 +12,8 @@ class DashboardHandlers {
   static Handler dashboard = Handler(
     handlerFunc: (context, params) {
       final authProvider = Provider.of<AuthProvider>(context!);
+      Provider.of<SideNavbarNotifierProvier>(context, listen: false)
+          .setCurrentPageUrl(Flurorouter.dashboardRoute);
       if (authProvider.authStatus == AuthStatus.authenticated)
         return DashboardView();
       else
@@ -20,6 +24,8 @@ class DashboardHandlers {
   static Handler icons = Handler(
     handlerFunc: (context, params) {
       final authProvider = Provider.of<AuthProvider>(context!);
+      Provider.of<SideNavbarNotifierProvier>(context, listen: false)
+          .setCurrentPageUrl(Flurorouter.iconsRoute);
       if (authProvider.authStatus == AuthStatus.authenticated)
         return IconsView();
       else

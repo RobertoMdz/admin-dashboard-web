@@ -5,6 +5,19 @@ class SideNavbarNotifierProvier extends ChangeNotifier {
 
   GlobalKey<ScaffoldState> get scaffoldKey => _scaffoldKey;
 
+  String _currentPage = '';
+
+  String get currentPage {
+    return _currentPage;
+  }
+
+  void setCurrentPageUrl(String routeName) {
+    _currentPage = routeName;
+    Future.delayed(Duration(milliseconds: 100), () {
+      notifyListeners();
+    });
+  }
+
   void controlMenu() {
     if (!_scaffoldKey.currentState!.isDrawerOpen) {
       _scaffoldKey.currentState!.openDrawer();

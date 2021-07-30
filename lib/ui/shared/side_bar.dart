@@ -1,8 +1,10 @@
+import 'package:admin_dashboard/providers/side_navbar_notifier_provider.dart';
 import 'package:admin_dashboard/router/router.dart';
 import 'package:admin_dashboard/services/navigation_service.dart';
 import 'package:admin_dashboard/ui/shared/group_menu_title.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 
 enum DrawerMenuOption { vacancies, profile, none }
 
@@ -13,6 +15,7 @@ class SideBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final sideMenuProvider = Provider.of<SideNavbarNotifierProvier>(context);
     return Drawer(
       child: SingleChildScrollView(
         child: Column(
@@ -23,7 +26,7 @@ class SideBar extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Icon(
+                  const Icon(
                     Icons.bubble_chart_outlined,
                     color: Color(0xff7A6BF5),
                   ),
@@ -38,11 +41,12 @@ class SideBar extends StatelessWidget {
                 ],
               ),
             ),
-            GroupMenuTitle(title: 'Main'),
+            const GroupMenuTitle(title: 'Main'),
             _DrawerListTile(
               menuOption: DrawerMenuOption.vacancies,
               title: "Dashboard",
-              isActive: true,
+              isActive:
+                  sideMenuProvider.currentPage == Flurorouter.dashboardRoute,
               icon: Icons.compass_calibration_outlined,
               onTap: (menuOption) {
                 navigateTo(route: Flurorouter.dashboardRoute);
@@ -95,7 +99,7 @@ class SideBar extends StatelessWidget {
             _DrawerListTile(
               menuOption: DrawerMenuOption.vacancies,
               title: "Icons",
-              isActive: false,
+              isActive: sideMenuProvider.currentPage == Flurorouter.iconsRoute,
               icon: Icons.eleven_mp,
               onTap: (menuOption) {
                 navigateTo(route: Flurorouter.iconsRoute);
