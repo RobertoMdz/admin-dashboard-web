@@ -21,28 +21,28 @@ class IconsView extends StatelessWidget {
           crossAxisAlignment: WrapCrossAlignment.start,
           children: [
             WhiteCard(
-              width: 150,
+              width: 130,
               title: 'person',
               child: Center(
                 child: Icon(Icons.person),
               ),
             ),
             WhiteCard(
-              width: 150,
+              width: 130,
               title: 'alarm',
               child: Center(
                 child: Icon(Icons.alarm),
               ),
             ),
             WhiteCard(
-              width: 150,
+              width: 130,
               title: 'login',
               child: Center(
                 child: Icon(Icons.login),
               ),
             ),
             WhiteCard(
-              width: 150,
+              width: 130,
               title: 'alarm',
               child: Center(
                 child: Icon(Icons.alarm),
