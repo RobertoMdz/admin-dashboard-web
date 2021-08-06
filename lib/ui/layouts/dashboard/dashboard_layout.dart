@@ -1,8 +1,8 @@
-import 'package:admin_dashboard/providers/side_navbar_notifier_provider.dart';
-import 'package:admin_dashboard/ui/shared/navbar.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '../../../providers/side_navbar_notifier_provider.dart';
+import '../../shared/navbar.dart';
 import '../../shared/side_bar.dart';
 
 class DashboardLayout extends StatelessWidget {
