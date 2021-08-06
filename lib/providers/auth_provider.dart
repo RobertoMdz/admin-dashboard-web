@@ -26,6 +26,7 @@ class AuthProvider extends ChangeNotifier {
       authStatus = AuthStatus.authenticated;
       LocalStorage.prefs.setString('token', authResponse.token);
       NavigationService.replaceTo(Flurorouter.dashboardRoute);
+      CafeApi.configureDio();
       notifyListeners();
     }).catchError((e) {
       NotificationService.showSnackbarError(e);
@@ -42,6 +43,7 @@ class AuthProvider extends ChangeNotifier {
       authStatus = AuthStatus.authenticated;
       LocalStorage.prefs.setString('token', authResponse.token);
       NavigationService.replaceTo(Flurorouter.dashboardRoute);
+      CafeApi.configureDio();
       notifyListeners();
     }).catchError((e) {
       NotificationService.showSnackbarError(e);
