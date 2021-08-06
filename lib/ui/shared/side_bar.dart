@@ -1,11 +1,12 @@
-import 'package:admin_dashboard/providers/auth_provider.dart';
-import 'package:admin_dashboard/providers/side_navbar_notifier_provider.dart';
-import 'package:admin_dashboard/router/router.dart';
-import 'package:admin_dashboard/services/navigation_service.dart';
-import 'package:admin_dashboard/ui/shared/group_menu_title.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+
+import '../../providers/auth_provider.dart';
+import '../../providers/side_navbar_notifier_provider.dart';
+import '../../router/router.dart';
+import '../../services/navigation_service.dart';
+import 'group_menu_title.dart';
 
 enum DrawerMenuOption { vacancies, profile, none }
 
