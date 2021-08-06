@@ -7,6 +7,7 @@ import 'providers/side_navbar_notifier_provider.dart';
 import 'router/router.dart';
 import 'services/local_storage.dart';
 import 'services/navigation_service.dart';
+import 'services/notifications_service.dart';
 import 'ui/layouts/auth/auth_layout.dart';
 import 'ui/layouts/dashboard/dashboard_layout.dart';
 import 'ui/layouts/splash/splash_layout.dart';
@@ -47,6 +48,7 @@ class MyApp extends StatelessWidget {
       title: 'Material App',
       initialRoute: '/',
       navigatorKey: NavigationService.navigatorKey,
+      scaffoldMessengerKey: NotificationService.messengerKey,
       onGenerateRoute: (routeSettings) =>
           Flurorouter.router.generator(routeSettings),
       builder: (_, child) {
