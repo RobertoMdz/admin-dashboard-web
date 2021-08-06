@@ -1,17 +1,19 @@
-import 'package:admin_dashboard/providers/side_navbar_notifier_provider.dart';
-import 'package:admin_dashboard/ui/layouts/auth/auth_layout.dart';
-import 'package:admin_dashboard/ui/layouts/dashboard/dashboard_layout.dart';
-import 'package:admin_dashboard/ui/layouts/splash/splash_layout.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import 'api/CafeApi.dart';
 import 'providers/auth_provider.dart';
+import 'providers/side_navbar_notifier_provider.dart';
 import 'router/router.dart';
 import 'services/local_storage.dart';
 import 'services/navigation_service.dart';
+import 'ui/layouts/auth/auth_layout.dart';
+import 'ui/layouts/dashboard/dashboard_layout.dart';
+import 'ui/layouts/splash/splash_layout.dart';
 
 void main() async {
   await LocalStorage.configurePrefs();
+  CafeApi.configureDio();
   Flurorouter.configureRoutes();
 
   runApp(AppState());
