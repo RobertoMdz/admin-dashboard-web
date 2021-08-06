@@ -72,4 +72,10 @@ class AuthProvider extends ChangeNotifier {
       return false;
     }
   }
+
+  logOut() {
+    LocalStorage.prefs.remove('token');
+    authStatus = AuthStatus.notAuthenticated;
+    notifyListeners();
+  }
 }
