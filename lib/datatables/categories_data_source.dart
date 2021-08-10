@@ -1,32 +1,37 @@
+import 'package:admin_dashboard/models/category.dart';
 import 'package:flutter/material.dart';
 
 class CategoriesDataTableSource extends DataTableSource {
+  final List<Categoria> categories;
+  CategoriesDataTableSource(this.categories);
+
   @override
   DataRow getRow(int index) {
+    final category = this.categories[index];
     return DataRow.byIndex(
       index: index,
       cells: [
         DataCell(
-          Text('Cell #1, index:$index'),
+          Text(category.id),
         ),
         DataCell(
-          Text('Cell #2, index:$index'),
+          Text(category.nombre),
         ),
         DataCell(
-          Text('Cell #3, index:$index'),
+          Text(category.usuario.nombre),
         ),
-        DataCell(
-          Text('Cell #4, index:$index'),
-        ),
+        DataCell(Row(
+          children: [IconButton(icon: Icon(Icons.edit), onPressed: () {})],
+        )),
       ],
     );
   }
 
   @override
-  bool get isRowCountApproximate => true;
+  bool get isRowCountApproximate => false;
 
   @override
-  int get rowCount => 1000;
+  int get rowCount => categories.length;
 
   @override
   int get selectedRowCount => 0;
