@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 
 import 'api/CafeApi.dart';
 import 'providers/auth_provider.dart';
+import 'providers/categories_provider.dart';
 import 'providers/side_navbar_notifier_provider.dart';
 import 'router/router.dart';
 import 'services/local_storage.dart';
@@ -32,7 +33,11 @@ class AppState extends StatelessWidget {
           create: (_) => AuthProvider(),
         ),
         ChangeNotifierProvider(
+          lazy: false,
           create: (context) => SideNavbarNotifierProvier(),
+        ),
+        ChangeNotifierProvider(
+          create: (context) => CategoriesProvider(),
         )
       ],
       child: MyApp(),
