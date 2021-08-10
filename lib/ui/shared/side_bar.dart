@@ -71,9 +71,12 @@ class SideBar extends StatelessWidget {
             _DrawerListTile(
               menuOption: DrawerMenuOption.vacancies,
               title: "Categories",
-              isActive: false,
+              isActive:
+                  sideMenuProvider.currentPage == Flurorouter.categoriesRoute,
               icon: Icons.category_outlined,
-              onTap: (menuOption) {},
+              onTap: (menuOption) {
+                navigateTo(route: Flurorouter.categoriesRoute);
+              },
             ),
             _DrawerListTile(
               menuOption: DrawerMenuOption.vacancies,
