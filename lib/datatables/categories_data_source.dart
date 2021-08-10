@@ -21,7 +21,10 @@ class CategoriesDataTableSource extends DataTableSource {
           Text(category.usuario.nombre),
         ),
         DataCell(Row(
-          children: [IconButton(icon: Icon(Icons.edit), onPressed: () {})],
+          children: [
+            IconButton(icon: Icon(Icons.edit), onPressed: () {}),
+            IconButton(icon: Icon(Icons.delete), onPressed: () {}),
+          ],
         )),
       ],
     );
