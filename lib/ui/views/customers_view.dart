@@ -1,4 +1,6 @@
+import 'package:admin_dashboard/providers/customers_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import '../../datatables/customers_data_source.dart';
 import '../labels/custom_labels.dart';
@@ -8,6 +10,7 @@ class CustomersView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final customersprovider = Provider.of<CustomersProvider>(context);
     final customersDataSource = CustomersDataTableSource();
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
