@@ -2,6 +2,7 @@ import 'package:admin_dashboard/providers/auth_provider.dart';
 import 'package:admin_dashboard/providers/side_navbar_notifier_provider.dart';
 import 'package:admin_dashboard/router/router.dart';
 import 'package:admin_dashboard/ui/views/categories_view.dart';
+import 'package:admin_dashboard/ui/views/customers_view.dart';
 import 'package:admin_dashboard/ui/views/icons_view.dart';
 import 'package:admin_dashboard/ui/views/login_view.dart';
 import 'package:fluro/fluro.dart';
@@ -41,6 +42,18 @@ class DashboardHandlers {
           .setCurrentPageUrl(Flurorouter.categoriesRoute);
       if (authProvider.authStatus == AuthStatus.authenticated)
         return CategoriesView();
+      else
+        return LoginView();
+    },
+  );
+
+  static Handler customers = Handler(
+    handlerFunc: (context, params) {
+      final authProvider = Provider.of<AuthProvider>(context!);
+      Provider.of<SideNavbarNotifierProvier>(context, listen: false)
+          .setCurrentPageUrl(Flurorouter.customersRoute);
+      if (authProvider.authStatus == AuthStatus.authenticated)
+        return CustomersView();
       else
         return LoginView();
     },

@@ -95,9 +95,12 @@ class SideBar extends StatelessWidget {
             _DrawerListTile(
               menuOption: DrawerMenuOption.vacancies,
               title: "Customers",
-              isActive: false,
+              isActive:
+                  sideMenuProvider.currentPage == Flurorouter.customersRoute,
               icon: Icons.supervised_user_circle_outlined,
-              onTap: (menuOption) {},
+              onTap: (menuOption) {
+                navigateTo(route: Flurorouter.customersRoute);
+              },
             ),
             const SizedBox(height: 10),
             GroupMenuTitle(title: 'UI elements'),
