@@ -10,8 +10,9 @@ class CustomersView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final customersprovider = Provider.of<CustomersProvider>(context);
-    final customersDataSource = CustomersDataTableSource();
+    final customersProvider = Provider.of<CustomersProvider>(context);
+    final customersDataSource =
+        CustomersDataTableSource(customersProvider.customers);
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
       child: ListView(
