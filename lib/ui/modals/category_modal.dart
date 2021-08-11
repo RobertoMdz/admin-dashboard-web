@@ -1,7 +1,9 @@
 import 'package:admin_dashboard/models/category.dart';
+import 'package:admin_dashboard/providers/categories_provider.dart';
 import 'package:admin_dashboard/ui/buttons/custom_outlined_button.dart';
 import 'package:admin_dashboard/ui/labels/custom_labels.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class CategoryModal extends StatefulWidget {
   final Categoria? category;
@@ -27,6 +29,8 @@ class _CategoryModalState extends State<CategoryModal> {
 
   @override
   Widget build(BuildContext context) {
+    final categoryProvider =
+        Provider.of<CategoriesProvider>(context, listen: false);
     return Container(
       height: 500,
       color: Colors.white,
@@ -50,7 +54,14 @@ class _CategoryModalState extends State<CategoryModal> {
           SizedBox(
             height: 20,
           ),
-          CustomOutlinedButton(onPressed: () {}, text: 'Guardar')
+          CustomOutlinedButton(
+              onPressed: () async {
+                if (id == null) {
+                  await categoryProvider.newCategory(nombre);
+                  Navigator.pop(context);
+                } else {}
+              },
+              text: 'Guardar')
         ],
       ),
     );
