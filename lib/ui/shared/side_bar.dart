@@ -12,7 +12,7 @@ enum DrawerMenuOption { vacancies, profile, none }
 
 class SideBar extends StatelessWidget {
   void navigateTo({required String route}) {
-    NavigationService.navigateTo(route);
+    NavigationService.replaceTo(route);
   }
 
   @override
