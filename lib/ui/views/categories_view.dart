@@ -26,6 +26,7 @@ class _CategoriesViewState extends State<CategoriesView> {
   Widget build(BuildContext context) {
     final categories = Provider.of<CategoriesProvider>(context).categories;
     return Container(
+      padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
       child: ListView(
         physics: const ClampingScrollPhysics(),
         children: [
@@ -54,7 +55,7 @@ class _CategoriesViewState extends State<CategoriesView> {
               DataColumn(label: Text('Creado por')),
               DataColumn(label: Text('Acciones')),
             ],
-            source: CategoriesDataTableSource(categories),
+            source: CategoriesDataTableSource(categories, context),
           ),
         ],
       ),

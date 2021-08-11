@@ -3,7 +3,9 @@ import 'package:flutter/material.dart';
 
 class CategoriesDataTableSource extends DataTableSource {
   final List<Categoria> categories;
-  CategoriesDataTableSource(this.categories);
+  final BuildContext context;
+
+  CategoriesDataTableSource(this.categories, this.context);
 
   @override
   DataRow getRow(int index) {
@@ -22,8 +24,32 @@ class CategoriesDataTableSource extends DataTableSource {
         ),
         DataCell(Row(
           children: [
-            IconButton(icon: Icon(Icons.edit), onPressed: () {}),
-            IconButton(icon: Icon(Icons.delete), onPressed: () {}),
+            IconButton(
+                icon: Icon(Icons.edit),
+                onPressed: () {
+                  print('editando: $category');
+                }),
+            IconButton(
+              icon: Icon(Icons.delete),
+              onPressed: () {
+                final dialog = AlertDialog(
+                  title: Text('Eliminar'),
+                  content: Text(
+                      'Este elemento se eliminará permanentemente ${category.nombre}'),
+                  actions: [
+                    TextButton(
+                      onPressed: () {
+                        Navigator.pop(context);
+                      },
+                      child: Text('Cancelar'),
+                    ),
+                    TextButton(onPressed: () {}, child: Text('Eliminar'))
+                  ],
+                );
+
+                showDialog(context: context, builder: (_) => dialog);
+              },
+            ),
           ],
         )),
       ],
