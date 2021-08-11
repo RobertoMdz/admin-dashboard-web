@@ -35,4 +35,26 @@ class CafeApi {
       throw ('Error en el post');
     }
   }
+
+  static Future httpPut(String urlPath, Map<String, dynamic> data) async {
+    final formData = FormData.fromMap(data);
+
+    try {
+      final response = await _dio.put(urlPath, data: formData);
+      return response.data;
+    } catch (e) {
+      print(e);
+      throw ('Error en el put');
+    }
+  }
+
+  static Future httpDelete(String urlPath) async {
+    try {
+      final response = await _dio.delete(urlPath);
+      return response.data;
+    } catch (e) {
+      print(e);
+      throw ('Error en el delete');
+    }
+  }
 }

@@ -55,13 +55,17 @@ class _CategoryModalState extends State<CategoryModal> {
             height: 20,
           ),
           CustomOutlinedButton(
-              onPressed: () async {
-                if (id == null) {
-                  await categoryProvider.newCategory(nombre);
-                  Navigator.pop(context);
-                } else {}
-              },
-              text: 'Guardar')
+            onPressed: () async {
+              if (id == null) {
+                await categoryProvider.newCategory(nombre);
+                Navigator.pop(context);
+              } else {
+                await categoryProvider.updateCategory(nombre, id!);
+                Navigator.pop(context);
+              }
+            },
+            text: 'Guardar',
+          )
         ],
       ),
     );
