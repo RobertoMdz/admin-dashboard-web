@@ -1,4 +1,5 @@
 import 'package:admin_dashboard/providers/categories_provider.dart';
+import 'package:admin_dashboard/ui/modals/category_modal.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -42,7 +43,16 @@ class _CategoriesViewState extends State<CategoriesView> {
               maxLines: 2,
             ),
             actions: [
-              CustomIconButton(onPressed: () {}, text: 'Nuevo', icon: Icons.add)
+              CustomIconButton(
+                  onPressed: () {
+                    showModalBottomSheet(
+                        context: context,
+                        builder: (_) {
+                          return CategoryModal();
+                        });
+                  },
+                  text: 'Nuevo',
+                  icon: Icons.add)
             ],
             onRowsPerPageChanged: (value) {
               setState(() {
