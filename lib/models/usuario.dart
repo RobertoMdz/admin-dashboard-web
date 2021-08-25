@@ -8,7 +8,7 @@ class Usuario {
     required this.nombre,
     required this.correo,
     required this.uid,
-    this.image,
+    this.img,
   });
 
   String rol;
@@ -17,7 +17,7 @@ class Usuario {
   String nombre;
   String correo;
   String uid;
-  String? image;
+  String? img;
 
   factory Usuario.fromJson(String str) => Usuario.fromMap(json.decode(str));
 
@@ -30,6 +30,7 @@ class Usuario {
         nombre: json["nombre"],
         correo: json["correo"],
         uid: json["uid"],
+        img: json["img"],
       );
 
   Map<String, dynamic> toMap() => {
@@ -39,5 +40,6 @@ class Usuario {
         "nombre": nombre,
         "correo": correo,
         "uid": uid,
+        "img": img,
       };
 }

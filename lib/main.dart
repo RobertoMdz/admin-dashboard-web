@@ -1,4 +1,5 @@
 import 'package:admin_dashboard/providers/customers_provider.dart';
+import 'package:admin_dashboard/providers/user_form_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -42,6 +43,9 @@ class AppState extends StatelessWidget {
         ),
         ChangeNotifierProvider(
           create: (context) => CustomersProvider(),
+        ),
+        ChangeNotifierProvider(
+          create: (context) => UserFormProvider(),
         )
       ],
       child: MyApp(),

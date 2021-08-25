@@ -37,52 +37,25 @@ class CustomersProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  Future<Usuario> getCustomerById(String uid) async {
+  Future<Usuario?> getCustomerById(String uid) async {
     try {
       final resp = await CafeApi.httpGet('/usuarios/$uid');
       final user = Usuario.fromMap(resp);
       return user;
     } catch (e) {
-      print(e);
-      throw (e);
+      return null;
     }
   }
 
-  /*Future newCategory(String name) async {
-    final data = {'nombre': name};
+  void refreshUser(Usuario newUser) {
+    this.customers = this.customers.map((user) {
+      if (user.uid == newUser.uid) {
+        user = newUser;
+      }
 
-    try {
-      final json = await CafeApi.httpPost('/categorias', data);
-      final newCategory = Categoria.fromMap(json);
-      categories.add(newCategory);
-      notifyListeners();
-    } catch (e) {
-      print('error al crear categoria');
-    }
+      return user;
+    }).toList();
+
+    notifyListeners();
   }
-
-  Future updateCategory(String name, String id) async {
-    final data = {'nombre': name};
-
-    try {
-      await CafeApi.httpPut('/categorias/$id', data);
-
-      final index = categories.indexWhere((category) => category.id == id);
-      categories[index].nombre = name;
-      notifyListeners();
-    } catch (e) {
-      print('error al actualizar categoria');
-    }
-  }
-
-  Future deleteCategory(String id) async {
-    try {
-      await CafeApi.httpDelete('/categorias/$id');
-
-      categories.removeWhere((category) => category.id == id);
-      notifyListeners();
-    } catch (e) {
-      print('error al actualizar categoria');
-    }
-  }*/
 }
