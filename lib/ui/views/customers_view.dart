@@ -24,13 +24,30 @@ class CustomersView extends StatelessWidget {
           ),
           const SizedBox(height: 10),
           PaginatedDataTable(
+            sortAscending: customersProvider.ascending,
+            sortColumnIndex: customersProvider.sortColumnIndex,
             columns: [
               DataColumn(label: Text('Avatar')),
-              DataColumn(label: Text('Nombre')),
-              DataColumn(label: Text('Email')),
+              DataColumn(
+                label: Text('Nombre'),
+                onSort: (index, _) {
+                  customersProvider.sortColumnIndex = index;
+                  customersProvider.sort<String>((user) => user.nombre);
+                },
+              ),
+              DataColumn(
+                label: Text('Email'),
+                onSort: (index, _) {
+                  customersProvider.sortColumnIndex = index;
+                  customersProvider.sort<String>((user) => user.correo);
+                },
+              ),
               DataColumn(label: Text('UID')),
               DataColumn(label: Text('Acciones')),
             ],
+            onPageChanged: (page) {
+              print('page: $page');
+            },
             source: customersDataSource,
           )
         ],
