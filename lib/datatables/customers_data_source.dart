@@ -1,6 +1,7 @@
-import 'package:admin_dashboard/models/usuario.dart';
-import 'package:admin_dashboard/services/navigation_service.dart';
 import 'package:flutter/material.dart';
+
+import '../models/usuario.dart';
+import '../services/navigation_service.dart';
 
 class CustomersDataTableSource extends DataTableSource {
   final List<Usuario> customers;
@@ -11,8 +12,18 @@ class CustomersDataTableSource extends DataTableSource {
   @override
   DataRow getRow(int index) {
     final customer = this.customers[index];
-    final image =
-        Image(image: AssetImage('assets/no-image.jpg'), width: 35, height: 35);
+    final image = (customer.img == null)
+        ? Image(
+            image: AssetImage('no-image.jpg'),
+            height: 35,
+            width: 35,
+          )
+        : FadeInImage.assetNetwork(
+            placeholder: 'loader.gif',
+            image: customer.img!,
+            width: 35,
+            height: 35);
+
     return DataRow.byIndex(
       index: index,
       cells: [

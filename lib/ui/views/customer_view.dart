@@ -1,4 +1,3 @@
-import 'package:admin_dashboard/services/navigation_service.dart';
 import 'package:email_validator/email_validator.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
@@ -7,6 +6,7 @@ import 'package:provider/provider.dart';
 import '../../models/usuario.dart';
 import '../../providers/customers_provider.dart';
 import '../../providers/user_form_provider.dart';
+import '../../services/navigation_service.dart';
 import '../../services/notifications_service.dart';
 import '../cards/white_card.dart';
 import '../inputs/custom_inputs.dart';
@@ -219,10 +219,9 @@ class _AvatarContainer extends StatelessWidget {
                               size: 20,
                             ),
                             onPressed: () async {
-                              FilePickerResult? result =
-                                  await FilePicker.platform.pickFiles(
-                                      allowedExtensions: ['jpg', 'jpeg', 'png'],
-                                      allowMultiple: false);
+                              FilePickerResult? result = await FilePicker
+                                  .platform
+                                  .pickFiles(allowMultiple: false);
 
                               if (result != null) {
                                 NotificationService.showBusyIndicator(context);
