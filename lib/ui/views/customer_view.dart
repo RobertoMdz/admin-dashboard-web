@@ -1,5 +1,6 @@
 import 'package:admin_dashboard/services/navigation_service.dart';
 import 'package:email_validator/email_validator.dart';
+import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -218,14 +219,13 @@ class _AvatarContainer extends StatelessWidget {
                               size: 20,
                             ),
                             onPressed: () async {
-                              /*FilePickerResult? result =
+                              FilePickerResult? result =
                                   await FilePicker.platform.pickFiles(
                                       allowedExtensions: ['jpg', 'jpeg', 'png'],
                                       allowMultiple: false);
 
                               if (result != null) {
-                                // PlatformFile file = result.files.first;
-                                NotificationsService.showBusyIndicator(context);
+                                NotificationService.showBusyIndicator(context);
 
                                 final newUser =
                                     await userFormProvider.uploadImage(
@@ -240,7 +240,7 @@ class _AvatarContainer extends StatelessWidget {
                               } else {
                                 // User canceled the picker
                                 print('no hay imagen');
-                              }*/
+                              }
                             },
                           ),
                         ),
